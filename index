@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Disneyland Park Cast Member Application</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+  *, *::before, *::after { box-sizing: border-box; }
+  body, html {
+    margin: 0; padding: 0; min-height: 100vh;
+    background: linear-gradient(135deg, #0d47a1, #1976d2);
+    font-family: 'Comfortaa', cursive;
+    color: #fff9c4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 15px 80px;
+    overflow-y: auto;
+  }
+  form {
+    background: #003c8fdd;
+    border-radius: 30px;
+    max-width: 700px;
+    width: 100%;
+    padding: 40px 50px;
+    box-shadow:
+      0 0 25px 6px #ffeb3b88,
+      0 10px 30px #ffeb3baa;
+    border: 5px solid #ffeb3b;
+    position: relative;
+    overflow-y: auto;
+    max-height: 90vh;
+  }
+  form::before {
+    content: '✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨ ✨';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 100%;
+    font-size: 2.2rem;
+    color: #fff59d;
+    opacity: 0.25;
+    transform: translateX(-50%);
+    letter-spacing: 14px;
+    user-select: none;
+    animation: twinkle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes twinkle {
+    0%,100% {opacity: 0.15;}
+    50% {opacity: 0.5;}
+  }
+  h2 {
+    text-align: center;
+    font-size: 3rem;
+    color: #fff176;
+    margin-bottom: 10px;
+    text-shadow:
+      0 0 8px #fff176,
+      0 0 20px #fbc02d,
+      0 0 30px #fbc02d;
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
+  }
+  h3 {
+    border-bottom: 3px solid #fff176;
+    padding-bottom: 8px;
+    margin: 30px 0 15px 0;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: #fffde7;
+    text-shadow:
+      0 0 8px #fffde7aa,
+      0 0 15px #fff176aa;
+  }
+  label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+    color: #fffde7;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    border: 3px solid #fff176;
+    font-size: 1.1rem;
+    font-family: 'Comfortaa', cursive;
+    color: #003c8f;
+    background: #fffde7;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    resize: vertical;
+    box-shadow: inset 2px 2px 8px #ffe082aa;
+    box-sizing: border-box;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #fff176;
+    outline: none;
+    box-shadow: 0 0 16px #fff176cc;
+    background: #fffde7;
+  }
+  select[multiple] {
+    min-height: 120px;
+    cursor: pointer;
+  }
+  button[type="submit"] {
+    margin-top: 35px;
+    background: linear-gradient(45deg, #ffeb3b, #fbc02d);
+    border: none;
+    border-radius: 50px;
+    padding: 18px 70px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #003c8f;
+    cursor: pointer;
+    box-shadow:
+      0 0 20px #fff176cc,
+      0 8px 25px #fbc02dcc;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Comfortaa', cursive;
+  }
+  button[type="submit"]:hover {
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow:
+      0 0 35px #fff176dd,
+      0 10px 30px #fff176dd;
+  }
+  button[type="submit"]:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px #fbc02dcc;
+  }
+  @media (max-width: 700px) {
+    form {
+      padding: 30px 25px;
+      max-height: 100vh;
+    }
+    h2 {
+      font-size: 2.5rem;
+    }
+    h3 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<form id="castAppForm" autocomplete="off">
+  <h2>Disneyland Park Cast Member Application</h2>
+
+  <h3>Personal Information</h3>
+  <label for="robloxUsername">ROBLOX Username *</label>
+  <input id="robloxUsername" name="ROBLOX Username" type="text" required />
+
+  <label for="discordUsername">Discord Username *</label>
+  <input id="discordUsername" name="Discord Username" type="text" required />
+
+  <label for="emailAddress">Email Address *</label>
+  <input id="emailAddress" name="Email Address" type="email" required />
+
+  <label for="age">Age *</label>
+  <input id="age" name="Age" type="text" required pattern="\d+" title="Please enter your age as a number" />
+
+  <label for="preferredRole">Preferred Cast Member Role *</label>
+  <select id="preferredRole" name="Preferred Role" required>
+    <option value="" disabled selected>-- Select a Role --</option>
+    <option value="Character Performer">Character Performer</option>
+    <option value="Ride Operator">Ride Operator</option>
+    <option value="Food & Beverage">Food & Beverage</option>
+    <option value="Guest Services">Guest Services</option>
+    <option value="Parade & Show Support">Parade & Show Support</option>
+    <option value="Merchandise Host">Merchandise Host</option>
+  </select>
+
+  <h3>Experience & Availability</h3>
+  <label for="previousExperience">Do you have previous experience working in customer service or hospitality? *</label>
+  <select id="previousExperience" name="Previous Experience" required>
+    <option value="" disabled selected>-- Select One --</option>
+    <option value="Yes, extensive experience">Yes, extensive experience</option>
+    <option value="Some experience">Some experience</option>
+    <option value="No experience yet">No experience yet</option>
+  </select>
+
+  <label for="availability">What days and times are you available to work? *</label>
+  <textarea id="availability" name="Availability" rows="3" placeholder="E.g. Weekends, Weekday evenings, etc." required></textarea>
+
+  <h3>Disney Spirit Questions</h3>
+
+  <label for="question1">How would you create "magical moments" for guests during your shift? *</label>
+  <textarea id="question1" name="Magical Moments" rows="4" placeholder="Describe your approach to making guests' day special." required></textarea>
+
+  <label for="question2">Describe a time you worked as part of a team to solve a difficult problem. *</label>
+  <textarea id="question2" name="Teamwork Example" rows="4" placeholder="What was the problem, and how did you help?" required></textarea>
+
+  <label for="question3">If a guest is upset because of a long wait time, how would you handle the situation? *</label>
+  <select id="question3" name="Guest Complaint" required>
+    <option value="" disabled selected>-- Choose an option --</option>
+    <option value="Listen attentively, empathize, and explain the situation politely.">Listen attentively, empathize, and explain the situation politely.</option>
+    <option value="Ignore the guest and keep doing your job.">Ignore the guest and keep doing your job.</option>
+    <option value="Tell the guest they must wait like everyone else.">Tell the guest they must wait like everyone else.</option>
+    <option value="Offer a small gesture, like a free treat or priority pass.">Offer a small gesture, like a free treat or priority pass.</option>
+  </select>
+
+  <label for="question4">What does being a Disneyland Cast Member mean to you? *</label>
+  <textarea id="question4" name="Cast Member Meaning" rows="4" placeholder="Share your feelings about joining our magical team." required></textarea>
+
+  <label for="question5">Do you have any special talents or skills that would contribute to the magic? (Optional)</label>
+  <textarea id="question5" name="Special Talents" rows="3" placeholder="Singing, acting, language skills, etc."></textarea>
+
+  <button type="submit">Submit Application</button>
+</form>
+
+<script>
+  const webhookURL = 'https://discord.com/api/webhooks/1391215778124136498/JXATylD5Nu3clxpjeMh3-ETjYpV8dL9kQgOLZz3NGDQU8gdLosZFq1QJxE--R5qdtduF';
+
+  const form = document.getElementById('castAppForm');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    // Gather form data
+    const data = new FormData(form);
+    const entries = {};
+    for (const [key, value] of data.entries()) {
+      entries[key] = value.trim();
+    }
+
+    // Build Discord embed message content
+    const embed = {
+      title: "🪄 New Disneyland Cast Member Application",
+      color: 0xFDD835, // golden yellow color
+      fields: [
+        { name: "ROBLOX Username", value: entries["ROBLOX Username"] || "N/A", inline: true },
+        { name: "Discord Username", value: entries["Discord Username"] || "N/A", inline: true },
+        { name: "Email Address", value: entries["Email Address"] || "N/A", inline: true },
+        { name: "Age", value: entries["Age"] || "N/A", inline: true },
+        { name: "Preferred Role", value: entries["Preferred Role"] || "N/A", inline: true },
+
+        { name: "\u200B", value: "\u200B" }, // spacer line
+
+        { name: "Previous Experience", value: entries["Previous Experience"] || "N/A", inline: true },
+        { name: "Availability", value: entries["Availability"] || "N/A" },
+
+        { name: "\u200B", value: "\u200B" }, // spacer line
+
+        { name: "How would you create magical moments?", value: entries["Magical Moments"] || "N/A" },
+        { name: "Teamwork example", value: entries["Teamwork Example"] || "N/A" },
+        { name: "Handling upset guests", value: entries["Guest Complaint"] || "N/A" },
+        { name: "What being a Cast Member means", value: entries["Cast Member Meaning"] || "N/A" },
+        { name: "Special talents / skills", value: entries["Special Talents"] || "None provided" },
+      ],
+      footer: {
+        text: "Disneyland Cast Member Applications",
+        icon_url: "https://upload.wikimedia.org/wikipedia/en/d/df/Disneyland_Resort_logo.svg"
+      },
+      timestamp: new Date().toISOString(),
+    };
+
+    const payload = JSON.stringify({ embeds: [embed] });
+
+    try {
+      const res = await fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: payload,
+      });
+
+      if (res.ok) {
+        alert("Thank you for applying to be a Disneyland Cast Member! We will review your application soon.");
+        form.reset();
+      } else {
+        alert("Sorry, there was an error submitting your application. Please try again later.");
+      }
+    } catch (error) {
+      alert("Error submitting the form: " + error.message);
+    }
+  });
+</script>
+
+</body>
+</html>
